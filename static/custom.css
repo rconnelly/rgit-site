@@ -83,7 +83,8 @@ html[data-brand="rabun"][data-theme="dark"] {
   outline-offset: 2px;
 }
 
-.site-header-github svg {
+.site-header-github svg,
+.site-footer-link-icon .site-footer-link-mark svg {
   width: 1.25rem;
   height: 1.25rem;
   fill: currentColor;

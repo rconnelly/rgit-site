@@ -29,7 +29,7 @@ note = "Self-hosted git forge. MIT licensed."
 links_label = "Project"
 links = [
   { name = "Burton", path = "https://www.burtonapp.com" },
-  { name = "Source", path = "https://github.com/Burton-Workspaces/rabun-git", icon = "github" },
+  { name = "GitHub", path = "https://github.com/rconnelly/rgit", icon = "github" },
 ]
 
 [extra.devlab.navigation]
