@@ -1,0 +1,37 @@
+base_url = "https://rgit.burtonapp.com"
+title = "rgit-site"
+description = "Documentation for rgit-site."
+theme = "devlab-theme"
+
+compile_sass = true
+
+[markdown.highlighting]
+light_theme = "github-light"
+dark_theme = "github-dark"
+
+[extra.devlab.brand]
+logo_text = "rgit-site"
+footer_text = "rgit-site"
+show_logo_mark = false
+
+[extra.devlab.footer]
+show = true
+note = "Built with rsites and Zola."
+
+[extra.devlab.navigation]
+links = [
+  { name = "Home", path = "/" },
+  { name = "Docs", kind = "docs" },
+]
+
+[extra.devlab.docs]
+section = "docs/_index.md"
+path = "/docs/"
+get_started_path = "/docs/getting-started/"
+
+[extra.devlab.appearance]
+default_mode = "system"
+show_toggle = true
+
+[extra.devlab.search]
+enabled = false

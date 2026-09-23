@@ -1,0 +1,20 @@
+name = "rgit-site"
+hostname = "rgit.burtonapp.com"
+base_url = "https://rgit.burtonapp.com"
+
+[theme]
+name = "devlab-theme"
+url = "https://codeberg.org/RiPetitor/devlab-theme"
+tag = "v0.7.0"
+mode = "submodule"
+
+[caddy]
+root = "/var/www/rgit-site"
+tls = true
+
+
+[project]
+url = "https://github.com/Burton-Workspaces/rabun-git.git"
+
+docs_path = "doc"
+
