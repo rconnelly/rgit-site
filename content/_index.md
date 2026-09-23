@@ -1,31 +1,32 @@
 +++
-title = "A git forge you run yourself."
-description = "Self-hosted git over SSH. Users, merge requests, and workflow agents on your machines. Browse the files with rgit view."
+title = "Rgit is Git with etiquette."
+description = "Self-hosted git over SSH. Conventional Commits and SemVer 2.0 by default. Users, merge requests, and workflow agents on your machines."
 
 [extra]
 home_layout = "wide"
 home_eyebrow = "Rabun Git"
 home_hero_image = "/images/hero/forge.svg"
-home_hero_image_alt = "Terminal session: rgit registers an admin key, then git pushes to ssh://git@HOST:2222."
+home_hero_image_alt = "Terminal session: rgit registers an admin key, then git pushes to ssh."
 home_primary_action_label = "Install"
 home_primary_action_path = "/docs/install/"
 home_secondary_action_label = "User guide"
 home_secondary_action_path = "/docs/"
 home_features = [
+  { kicker = "Etiquette", title = "SemVer 2.0", description = "Conventional Commits bump MAJOR.MINOR.PATCH. The forge can reject a messy push. Set enforce to false in .rabun/version.toml to turn those gates off." },
   { kicker = "Remote", title = "SSH repositories", description = "Bare repos on port 2222. Clone and push with ordinary git. Your existing sshd on port 22 stays put." },
   { kicker = "Review", title = "Merge requests", description = "Open, review, and fast-forward merge from the CLI. Protected main and master stay with admins." },
   { kicker = "CI", title = "YAML workflows", description = "Shell steps in .rabun/workflows on push, tag, and request. A runs-on list starts one run each on Linux, macOS, and Windows." },
-  { kicker = "Files", title = "Web view", description = "rgit view renders a local tree in the browser: README, file tree, and file contents, on 127.0.0.1:1111." },
+  { kicker = "Files", title = "Web view", description = "rgit view renders a local tree in the browser: README, file tree, and file contents." },
 ]
 
 [extra.home_learn]
 eyebrow = "The forge"
 title = "Rabun Git (rgit)"
-description = "SSH based communication with teams and groups baked in."
+description = "SSH based communication with teams and groups baked in. Etiquette is the default; you can switch it off."
 cards = [
   { kicker = "People", title = "Users and keys", description = "Create logins, attach SSH keys, and grant read, write, or admin on owner/name." },
-  { kicker = "History", title = "Everyday git", description = "Branches, clones, and tags work as they do on any SSH remote. rgit view opens that tree in a browser on this machine." },
-  { kicker = "Host", title = "Ubuntu pack and push", description = "Ship the binary, env file, and rabun-git.service over SSH. Data lives under /var/lib/rabun-git." },
+  { kicker = "History", title = "Everyday git", description = "Branches, clones, and tags work as they do on any SSH remote. feat/fix/breaking commits are the default language of a release." },
+  { kicker = "Versions", title = "Turn etiquette off", description = "Keep Conventional Commits and SemVer, or set commits, tags, and manifests to false in .rabun/version.toml." },
   { kicker = "Builders", title = "Agents on your machines", description = "Register a builder per label. rgit agent polls over SSH, claims the oldest matching job, clones that SHA, and writes the log back." },
 ]
 
@@ -48,6 +49,6 @@ secondary_label = "Compared to GitHub"
 secondary_path = "/docs/compared-to-github/"
 +++
 
-Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, and builder agents. [`rgit view`](/docs/everyday-git/#browse-locally) shows the files in a browser on the machine that has the checkout.
+Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, builder agents, and [version releases](/docs/versioning/). [`rgit view`](/docs/everyday-git/#browse-locally) shows the files in a browser on the machine that has the checkout.
 
 Download a source snapshot of `master` from the [releases](/releases/) page.

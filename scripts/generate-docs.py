@@ -28,8 +28,9 @@ PAGES = [
     ("everyday-git.md", 6),
     ("merge-requests.md", 7),
     ("ci-workflows.md", 8),
-    ("commands.md", 9),
-    ("compared-to-github.md", 10),
+    ("versioning.md", 9),
+    ("commands.md", 10),
+    ("compared-to-github.md", 11),
     ("architecture.md", 20),
     ("deploy-ubuntu.md", 21),
 ]

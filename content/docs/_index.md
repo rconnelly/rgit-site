@@ -1,6 +1,6 @@
 +++
 title = "User guide"
-description = "Rabun Git is a git forge you run on a machine you own: SSH remotes, users and roles, merge requests, and a small CI runner."
+description = "Rgit is Git with etiquette."
 sort_by = "weight"
 template = "docs.html"
 page_template = "doc-page.html"
@@ -10,7 +10,7 @@ generated = true
 source = "doc/README.md"
 +++
 
-Rabun Git is a git forge you run on a machine you own: SSH remotes, users and roles, merge requests, and a small CI runner. There is no website on the forge host. To read a tree in a browser, use [`rgit view`](/docs/everyday-git/#browse-locally) on this machine.
+Rgit is Git with etiquette. Rabun Git is a git forge you run on a machine you own: SSH remotes, users and roles, merge requests, a small CI runner, and Conventional Commits / SemVer 2.0 by default ([how to turn that off](/docs/versioning/#disable-etiquette)). There is no website on the forge host. To read a tree in a browser, use [`rgit view`](/docs/everyday-git/#browse-locally) on this machine.
 
 If you know `git clone`, `git commit`, and `git push`, start at the top and follow the pages in order. Each page has copy-paste examples (`git.example.com`, user `ada`, repo `ada/website`).
 
@@ -24,8 +24,9 @@ If you know `git clone`, `git commit`, and `git push`, start at the top and foll
 6. [Everyday git](/docs/everyday-git/) — clone, branches, protected `main` / `master`, local `rgit view`
 7. [Merge requests](/docs/merge-requests/) — propose, review, fast-forward merge
 8. [CI workflows](/docs/ci-workflows/) — `.rabun/workflows` on push, tag, and request
-9. [Command reference](/docs/commands/) — CLI and SSH cheat sheet
-10. [Compared to GitHub](/docs/compared-to-github/) — feature and `gh` command gap analysis
+9. [Versioning](/docs/versioning/) — SemVer, Conventional Commits, changelog, `rgit version`
+10. [Command reference](/docs/commands/) — CLI and SSH cheat sheet
+11. [Compared to GitHub](/docs/compared-to-github/) — feature and `gh` command gap analysis
 
 Operators who need on-disk layout, ACL internals, or systemd: [architecture](/docs/architecture/). Ubuntu pack/push: [deploy Ubuntu](/docs/deploy-ubuntu/).
 

@@ -1,14 +1,14 @@
 +++
 title = "Compared to GitHub"
-description = "rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forward merge requests, and in-repo shell CI."
-weight = 10
+description = "rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forward merge requests, in-repo shell CI, and SemVer 2.0 / Conventional Commits by default."
+weight = 11
 
 [extra]
 generated = true
 source = "doc/compared-to-github.md"
 +++
 
-rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forward merge requests, and in-repo shell CI. It is not a GitHub clone. There is no website on the forge host, and most GitHub products have no counterpart.
+rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forward merge requests, in-repo shell CI, and SemVer 2.0 / Conventional Commits by default. It is not a GitHub clone. There is no website on the forge host, and most GitHub products have no counterpart.
 
 `rgit` and `rabun-git` are the same program. Examples use `rgit` after `rgit remote add origin git@HOST`.
 
@@ -55,7 +55,7 @@ A shorter map lives in [What is Rabun Git?](/docs/what-it-is/).
 | --- | --- |
 | Web UI, mobile app, Codespaces | Local `rgit view` (Zola on loopback). No hosted gitweb, mobile app, or Codespaces |
 | Issues, Discussions, Projects, Wikis, Pages | None |
-| Packages, Releases, Gists | None (git tags exist; no release artifacts) |
+| Packages, Releases, Gists | `rgit version release` for SemVer tags, changelog, and manifest bumps on this machine. No forge-hosted release artifacts or packages |
 | Dependabot, security advisories, code scanning | None |
 | Notifications, webhooks, GitHub Apps, OAuth | Companion heartbeat only (`rgit status` / loopback `/health`) |
 | Forks, compare view | No forks; clone the same `owner/name` if you have access |
@@ -71,16 +71,16 @@ A shorter map lives in [What is Rabun Git?](/docs/what-it-is/).
 | `gh ssh-key add` | `rgit origin key copy` (first key) or `key add USER --file ~/.ssh/id_ed25519.pub` |
 | `gh pr create` / `list` / `view` / `review` / `merge` | `request create` / `list` / `show` / `review` / `merge` |
 | `gh run list` / `view` | `run list` / `show` / `logs` |
-| `gh api`, `gh issue`, `gh release`, `gh gist`, … | None |
+| `gh api`, `gh issue`, `gh release`, `gh gist`, … | `rgit version release` covers local tagging/changelog; no GitHub Releases product on the forge |
 
 ## Host-only commands
 
 These run the forge. They are not GitHub product analogues:
 
-`init`, `check`, `serve`, `shell`, Ubuntu [pack and push](/docs/deploy-ubuntu/).
+`init`, `check`, `serve`, `shell`, `version`, Ubuntu [pack and push](/docs/deploy-ubuntu/).
 
 ## Practical takeaway
 
-rgit is enough if you want private SSH remotes, simple ACL, fast-forward merge requests, and a few `sh -c` jobs on one box. Anything people do in the GitHub website (except a local `rgit view` of a tree you already have), or with tokens, orgs, issues, or the Actions marketplace, is a gap by design.
+rgit is enough if you want private SSH remotes, simple ACL, fast-forward merge requests, Conventional Commits / SemVer 2.0 (or [those gates off](/docs/versioning/#disable-etiquette)), and a few `sh -c` jobs on one box. Anything people do in the GitHub website (except a local `rgit view` of a tree you already have), or with tokens, orgs, issues, or the Actions marketplace, is a gap by design.
 
 Next: [Install](/docs/install/), or the [command reference](/docs/commands/).

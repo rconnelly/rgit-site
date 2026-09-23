@@ -1,7 +1,7 @@
 +++
 title = "Command reference"
 description = "rgit and rabun-git are the same program."
-weight = 9
+weight = 10
 
 [extra]
 generated = true
@@ -38,7 +38,7 @@ Over SSH, omit the `rabun-git` prefix and use port **2222**:
 ssh -p 2222 git@git.example.com repo list
 ```
 
-`init`, `check`, `status`, `view`, `serve`, `shell`, `remote`, `key copy`, and `rgit agent --labels` (the poll loop) work only on the machine that runs them. `key copy` uses host SSH on port 22 (not git port 2222). The others work over SSH or `rgit origin …`.
+`init`, `check`, `status`, `view`, `version`, `serve`, `shell`, `remote`, `key copy`, and `rgit agent --labels` (the poll loop) work only on the machine that runs them. `key copy` uses host SSH on port 22 (not git port 2222). The others work over SSH or `rgit origin …`.
 
 On a systemd host (`/etc/rabun-git/rabun-git.env`), mutating commands must run as the `rabun-git` user:
 
@@ -67,6 +67,12 @@ After that, `rgit origin repo create ada/website` (or `ssh -p 2222 git@HOST …`
 | `rabun-git status` | Companion JSON (`rabun.companion/v1`), no keys |
 | `rabun-git serve [--bind HOST:PORT]` | Listen for git + management commands |
 | `rabun-git view [PATH\|owner/name] [--ref REF] [--bind 127.0.0.1:1111] [--open]` | Loopback Zola preview of a local git tree (needs `zola` 0.23.4+) |
+| `rabun-git version show` | Agreed SemVer and version files in this work tree |
+| `rabun-git version check [RANGE]` | Conventional Commits in a range (default: last version tag..HEAD) |
+| `rabun-git version bump [auto\|patch\|minor\|major] [--to X.Y.Z] [--dry-run]` | Rewrite version files only |
+| `rabun-git version changelog [--from TAG]` | Preview Keep a Changelog notes from commits |
+| `rabun-git version release […] [--dry-run] [--no-tag]` | Bump files, CHANGELOG.md, commit, annotated tag |
+| `rabun-git version hook install` | Local `commit-msg` hook → `rgit hook commit-msg` |
 | `rabun-git shell` | One sudo, then bash as the systemd user (prompt `(rabun-git)`; `exit` to leave) |
 
 ## Named remotes (this machine)
@@ -149,6 +155,7 @@ git push origin HEAD:refs/rabun/requests/new/my-branch
 
 ## Further reading
 
+- [Versioning](/docs/versioning/)
 - [Architecture and systemd](/docs/architecture/)
 - [Ubuntu pack/push](/docs/deploy-ubuntu/)
 - [User guide index](/docs/)

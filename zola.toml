@@ -1,6 +1,6 @@
 base_url = "https://rgit.burtonapp.com"
 title = "Rabun Git"
-description = "Self-hosted git forge. SSH remotes, merge requests, YAML workflows, and a local web view of the files."
+description = "Rgit is Git with etiquette. Self-hosted forge: SSH remotes, Conventional Commits, SemVer 2.0, merge requests, and YAML workflows."
 theme = "devlab-theme"
 
 compile_sass = true
@@ -25,7 +25,7 @@ logo_mark_path = "/brand/rabun.svg"
 
 [extra.devlab.footer]
 show = true
-note = "Self-hosted git forge. MIT licensed."
+note = "Rgit is Git with etiquette. MIT licensed."
 links_label = "Project"
 links = [
   { name = "Burton", path = "https://www.burtonapp.com" },
