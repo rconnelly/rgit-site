@@ -8,7 +8,8 @@ This is an [rsites](https://github.com/Burton-Workspaces/rabun-sites) Zola + Dev
 This site documents the project at `https://github.com/Burton-Workspaces/rabun-git.git` (docs live under `doc/` in that repo).
 
 - Read that repository (README, docs, CHANGELOG, ADRs) for facts.
-- Write Zola pages **in this site** under `content/`.
+- User-guide pages under `content/docs/` are generated. Run `python3 scripts/generate-docs.py` (or `./scripts/build.sh`) after `doc/` changes in the rabun-git checkout. Do not hand-edit generated pages (`extra.generated = true`).
+- Write other Zola pages **in this site** under `content/` (home, and any page that is not the generated guide).
 - Do not copy the project tree into `themes/` or replace `content/` wholesale.
 - If that repo is already a Zola content tree, attach it with `rsites content add <url> --mount docs` instead of duplicating files.
 

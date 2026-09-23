@@ -1,0 +1,15 @@
+# Installed to /etc/caddy/sites-enabled/rgit-site.caddy
+# The site block matches `rsites caddy render --snippet` (hostname + caddy.root
+# from rsites.toml). Apex redirect is extra so a www hostname can share the site.
+# Bootstrap rewrites placeholder.example.com (and apex.example.com) when you
+# pass --domain.
+placeholder.example.com {
+	root * /var/www/rgit-site
+	encode gzip zstd
+	try_files {path} {path}/ /404.html
+	file_server
+}
+
+apex.example.com {
+	redir https://placeholder.example.com{uri} permanent
+}

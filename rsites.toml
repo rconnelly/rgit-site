@@ -6,15 +6,16 @@ base_url = "https://rgit.burtonapp.com"
 name = "devlab-theme"
 url = "https://codeberg.org/RiPetitor/devlab-theme"
 tag = "v0.7.0"
+commit = "8fea270cd282e4b0137fb39ae63603698509b6fa"
 mode = "submodule"
+
+[brand]
+id = "rabun"
+
+[project]
+url = "https://github.com/Burton-Workspaces/rabun-git.git"
+docs_path = "doc"
 
 [caddy]
 root = "/var/www/rgit-site"
 tls = true
-
-
-[project]
-url = "https://github.com/Burton-Workspaces/rabun-git.git"
-
-docs_path = "doc"
-

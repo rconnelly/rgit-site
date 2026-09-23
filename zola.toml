@@ -1,22 +1,35 @@
 base_url = "https://rgit.burtonapp.com"
-title = "rgit-site"
-description = "Documentation for rgit-site."
+title = "Rabun Git"
+description = "Self-hosted git forge. SSH remotes, merge requests, and YAML workflows. rgit is the short command."
 theme = "devlab-theme"
 
 compile_sass = true
+
+[link_checker]
+skip_prefixes = [
+  "https://github.com/Burton-Workspaces/",
+]
 
 [markdown.highlighting]
 light_theme = "github-light"
 dark_theme = "github-dark"
 
+[extra.brand]
+id = "rabun"
+
 [extra.devlab.brand]
-logo_text = "rgit-site"
-footer_text = "rgit-site"
-show_logo_mark = false
+logo_text = "Rabun Git"
+footer_text = "Rabun Git"
+show_logo_mark = true
+logo_mark_path = "/brand/rabun.svg"
 
 [extra.devlab.footer]
 show = true
-note = "Built with rsites and Zola."
+note = "Self-hosted git forge. MIT licensed."
+links_label = "Project"
+links = [
+  { name = "Source", path = "https://github.com/Burton-Workspaces/rabun-git", icon = "github" },
+]
 
 [extra.devlab.navigation]
 links = [
@@ -27,7 +40,7 @@ links = [
 [extra.devlab.docs]
 section = "docs/_index.md"
 path = "/docs/"
-get_started_path = "/docs/getting-started/"
+get_started_path = "/docs/install/"
 
 [extra.devlab.appearance]
 default_mode = "system"

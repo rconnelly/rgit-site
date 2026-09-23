@@ -1,0 +1,69 @@
+/* Rabun mountain mark (doc/brand/logo.svg): cream, gold, sage, pine, forest. */
+
+:root,
+:root[data-theme="light"],
+html[data-brand="rabun"],
+html[data-brand="rabun"][data-theme="light"] {
+  --color-bg: #faf3d8;
+  --color-surface: #fff8e0;
+  --color-fg: #0c241c;
+  --color-muted: #2f5c4a;
+  --color-border: #efe4b8;
+  --color-accent: #1f4a38;
+  --color-accent-contrast: #fff8e0;
+  --shadow-color: 12 36 28;
+  --color-code-bg: #efe4b8;
+  --color-code-fg: #0c241c;
+  --color-pre-bg: #fff8e0;
+  --color-pre-fg: #0c241c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  html[data-brand="rabun"] {
+    --color-bg: #0c241c;
+    --color-surface: #143528;
+    --color-fg: #faf3d8;
+    --color-muted: #7a9e6e;
+    --color-border: #1f4a38;
+    --color-accent: #c4a04a;
+    --color-accent-contrast: #0c241c;
+    --shadow-color: 0 0 0;
+    --color-code-bg: #143528;
+    --color-code-fg: #faf3d8;
+    --color-pre-bg: #0c241c;
+    --color-pre-fg: #faf3d8;
+  }
+}
+
+:root[data-theme="dark"],
+html[data-brand="rabun"][data-theme="dark"] {
+  --color-bg: #0c241c;
+  --color-surface: #143528;
+  --color-fg: #faf3d8;
+  --color-muted: #7a9e6e;
+  --color-border: #1f4a38;
+  --color-accent: #c4a04a;
+  --color-accent-contrast: #0c241c;
+  --shadow-color: 0 0 0;
+  --color-code-bg: #143528;
+  --color-code-fg: #faf3d8;
+  --color-pre-bg: #0c241c;
+  --color-pre-fg: #faf3d8;
+}
+
+.hero-media {
+  padding-block-start: 0;
+  background: #0c241c;
+  border-color: #1f4a38;
+}
+
+.hero-media::before {
+  content: none;
+}
+
+.hero-media img {
+  border-block-start: 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
