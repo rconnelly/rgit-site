@@ -6,7 +6,7 @@
 #   ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz --bootstrap root@1.2.3.4
 #   ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz root@1.2.3.4
 #
-# --domain defaults to rgit.burtonapp.com on --bootstrap.
+# --domain defaults to rgit.rs on --bootstrap.
 set -euo pipefail
 
 BOOTSTRAP=0
@@ -16,7 +16,7 @@ SSH_PORT="${SITE_SSH_PORT:-22}"
 
 usage() {
   echo "usage: $0 --archive FILE [--bootstrap] [--domain FQDN] [--port N] user@host" >&2
-  echo "--domain defaults to rgit.burtonapp.com on --bootstrap" >&2
+  echo "--domain defaults to rgit.rs on --bootstrap" >&2
   exit 2
 }
 
@@ -74,7 +74,7 @@ remote "chmod +x $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh $(printf '%q' 
 REMOTE_ARCHIVE="${REMOTE_DIR}/site.tar.gz"
 if [[ "$BOOTSTRAP" -eq 1 ]]; then
   if [[ -z "$DOMAIN" ]]; then
-    DOMAIN="rgit.burtonapp.com"
+    DOMAIN="rgit.rs"
   fi
   echo "bootstrapping ${TARGET_HOST} (Caddy vhost ${DOMAIN})"
   remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_ENABLE_UFW=$(printf '%q' "${SITE_ENABLE_UFW:-}") CADDY_EMAIL=$(printf '%q' "${CADDY_EMAIL:-}") bash $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh"

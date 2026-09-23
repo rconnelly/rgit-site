@@ -4,7 +4,7 @@
 #   sudo ./configure-caddy.sh
 #
 # Env:
-#   SITE_DOMAIN       hostname (default rgit.burtonapp.com, or last value in site.env)
+#   SITE_DOMAIN       hostname (default rgit.rs, or last value in site.env)
 #   SITE_CADDY_DIR    Caddy config dir (default /etc/caddy)
 #   SITE_WEBROOT      published tree (default /var/www/rgit-site)
 #   SITE_ENV_FILE     health-check env file (default /etc/rgit-site/site.env)
@@ -48,7 +48,7 @@ resolve_domain() {
     printf '%s' ":8080"
     return
   fi
-  printf '%s' "rgit.burtonapp.com"
+  printf '%s' "rgit.rs"
 }
 
 apex_for() {

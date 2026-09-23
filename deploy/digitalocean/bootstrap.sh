@@ -5,7 +5,7 @@
 # (that stays deploy/ubuntu in the rabun-git checkout).
 #
 # Safe on a host that already runs other Caddy sites: it installs an
-# rgit.burtonapp.com virtual host and does not replace unrelated site blocks.
+# rgit.rs virtual host and does not replace unrelated site blocks.
 #
 #   sudo SITE_ARCHIVE=/path/to/rgit-site.tar.gz ./bootstrap.sh
 set -euo pipefail

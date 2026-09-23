@@ -1,6 +1,6 @@
 name = "rgit-site"
-hostname = "rgit.burtonapp.com"
-base_url = "https://rgit.burtonapp.com"
+hostname = "rgit.rs"
+base_url = "https://rgit.rs"
 
 [theme]
 name = "devlab-theme"

@@ -23,7 +23,7 @@ if [[ -n "${SITE_HEALTH_HOST:-}" ]]; then
 elif [[ "$HEALTH_URL" == *":8080"* ]]; then
   HEALTH_HOST=""
 else
-  HEALTH_HOST="rgit.burtonapp.com"
+  HEALTH_HOST="rgit.rs"
 fi
 ARCHIVE_PATH="${SITE_ARCHIVE:-}"
 SKIP_HEALTH="${SITE_SKIP_HEALTH:-}"
