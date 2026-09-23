@@ -18,7 +18,7 @@ The palette is Rabun's mountain mark: cream `#faf3d8`, gold `#c4a04a`, sage `#7a
 | `scripts/build.sh` | Regenerate docs, `rsites build`, pack `dist/rgit-site.tar.gz` |
 | `deploy/digitalocean/` | Droplet install and Caddy virtual host |
 
-The forge binary itself is deployed from the rabun-git repo (`deploy/ubuntu/`). These scripts publish this static site only.
+The forge binary itself is deployed from the rabun-git repo (`deploy/ubuntu/`). These scripts publish this static site, including the source tarball on the release page.
 
 ## Requirements
 
@@ -45,7 +45,13 @@ python3 scripts/generate-docs.py
 rsites serve
 ```
 
-That is Zola's live server (not Caddy). After content or nav changes run `rsites check`. `./scripts/build.sh` writes `public/` and `dist/rgit-site.tar.gz`.
+That is Zola's live server (not Caddy). After content or nav changes run `rsites check`. `./scripts/build.sh` regenerates the guide, packs a source tarball of rabun-git `master` from GitHub, then writes `public/` and `dist/rgit-site.tar.gz`.
+
+## Source release
+
+`scripts/pack-source.sh` fetches `master` from GitHub (`git@github.com:Burton-Workspaces/rabun-git.git`, override with `RABUN_GIT_URL`) and writes a source-only archive under `static/releases/`. If that GitHub remote is missing, it packs the local checkout's `master` commit (`../rabun-git`, override with `RABUN_GIT_DIR`) and does not fetch or update that checkout. The release page is generated at `content/releases.md`. The tarball is not committed. `./scripts/build.sh` includes it in `public/`, and the DigitalOcean upload publishes it at `/releases/` next to the rest of the site.
+
+The script refuses any remote that is not on `github.com`, so it will not talk to a Rabun Git forge.
 
 ## Caddy
 
@@ -94,7 +100,7 @@ Ubuntu 24.04 LTS. Point an A record for **rgit.burtonapp.com** at the droplet IP
 
 | Path | Role |
 | --- | --- |
-| `/var/www/rgit-site` | published `public/` tree |
+| `/var/www/rgit-site` | published `public/` tree, including `/releases/*.tar.gz` |
 | `/etc/caddy/sites-enabled/rgit-site.caddy` | virtual host |
 | `/etc/caddy/Caddyfile` | `import /etc/caddy/sites-enabled/*` plus any sites you already had |
 | `/etc/rgit-site/site.env` | health-check URL and `Host` header |

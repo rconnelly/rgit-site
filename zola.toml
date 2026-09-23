@@ -36,6 +36,7 @@ links = [
 links = [
   { name = "Home", path = "/" },
   { name = "Docs", kind = "docs" },
+  { name = "Releases", path = "/releases/" },
   { name = "Burton", path = "https://www.burtonapp.com" },
 ]
 

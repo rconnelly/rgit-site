@@ -48,3 +48,5 @@ secondary_path = "/docs/compared-to-github/"
 +++
 
 Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, and builder agents.
+
+Download a source snapshot of `master` from the [releases](/releases/) page.

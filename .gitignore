@@ -1,2 +1,4 @@
 public/
 dist/
+.cache/
+static/releases/
