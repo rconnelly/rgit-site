@@ -1,5 +1,5 @@
 +++
-title = "What Rabun Git is"
+title = "What is Rabun Git?"
 description = "Rabun Git is a git forge you run yourself."
 weight = 1
 

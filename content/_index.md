@@ -14,7 +14,7 @@ home_secondary_action_path = "/docs/"
 home_features = [
   { kicker = "Remote", title = "SSH repositories", description = "Bare repos on port 2222. Clone and push with ordinary git. Your existing sshd on port 22 stays put." },
   { kicker = "Review", title = "Merge requests", description = "Open, review, and fast-forward merge from the CLI. Protected main and master stay with admins." },
-  { kicker = "CI", title = "YAML workflows", description = "Shell steps in .rabun/workflows on push, tag, and request. runs-on fans out to Linux, macOS, and Windows." },
+  { kicker = "CI", title = "YAML workflows", description = "Shell steps in .rabun/workflows on push, tag, and request. A runs-on list starts one run each on Linux, macOS, and Windows." },
 ]
 
 [extra.home_learn]
@@ -25,17 +25,17 @@ cards = [
   { kicker = "People", title = "Users and keys", description = "Create logins, attach SSH keys, and grant read, write, or admin on owner/name." },
   { kicker = "History", title = "Everyday git", description = "Branches, clones, and tags work as they do on any SSH remote." },
   { kicker = "Host", title = "Ubuntu pack and push", description = "Ship the binary, env file, and rabun-git.service over SSH. Data lives under /var/lib/rabun-git." },
-  { kicker = "Builders", title = "Agents on your machines", description = "rgit agent polls the forge over SSH, claims a queued label, clones that SHA, and reports the log." },
+  { kicker = "Builders", title = "Agents on your machines", description = "Register a builder per label. rgit agent polls over SSH, claims the oldest matching job, clones that SHA, and writes the log back." },
 ]
 
 [extra.home_workflow]
-eyebrow = "First hour"
-title = "From a checkout to a remote your team can push."
-description = "Install the binary, start serve, register one admin key, then create owner/name."
+eyebrow = "Builders"
+title = "Linux, macOS, and Windows from one workflow."
+description = "runs-on: [linux, macos, windows] fans out to one run per label. Each agent polls the forge on port 2222, clones that commit, and runs the steps. Labels must match exactly."
 points = [
-  { title = "Install", description = "cargo install from a clone, then link the rgit command beside rabun-git." },
-  { title = "Serve", description = "Pack-and-push onto Ubuntu, or run init and serve yourself. Health listens on 127.0.0.1:8792." },
-  { title = "Push", description = "git remote add origin ssh://git@HOST:2222/owner/name.git" },
+  { title = "Linux", description = "Label linux. With no registered linux builder, the job still runs on the forge host as the rabun-git user, using sh -c." },
+  { title = "macOS", description = "rgit origin agent register mac --label macos, then rgit agent --labels macos on that Mac. launchd keeps the poll loop running. The shell defaults to sh." },
+  { title = "Windows", description = "The same poll loop with --labels windows. Steps default to pwsh -NoProfile -Command unless the job sets shell." },
 ]
 
 [extra.home_cta]

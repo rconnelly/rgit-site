@@ -16,7 +16,7 @@ If you know `git clone`, `git commit`, and `git push`, start at the top and foll
 
 ## Contents
 
-1. [What Rabun Git is](/docs/what-it-is/) — how this compares to GitHub and a plain git remote
+1. [What is Rabun Git?](/docs/what-it-is/) — how this compares to GitHub and a plain git remote
 2. [Install](/docs/install/) — build the `rabun-git` command
 3. [Start the forge](/docs/start-the-forge/) — pack-and-push or manual `init` / `serve`, then first admin and key
 4. [Set up a remote repository](/docs/remote-repository/) — create `owner/name`, add `origin`, first push or clone

@@ -12,7 +12,7 @@ rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forwar
 
 `rgit` and `rabun-git` are the same program. Examples use `rgit` after `rgit remote add origin git@HOST`.
 
-A shorter map lives in [What Rabun Git is](/docs/what-it-is/).
+A shorter map lives in [What is Rabun Git?](/docs/what-it-is/).
 
 ## Hosted git
 
