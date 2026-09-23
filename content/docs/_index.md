@@ -10,7 +10,7 @@ generated = true
 source = "doc/README.md"
 +++
 
-Rabun Git is a git forge you run on a machine you own: SSH remotes, users and roles, merge requests, and a small CI runner. There is no website.
+Rabun Git is a git forge you run on a machine you own: SSH remotes, users and roles, merge requests, and a small CI runner. There is no website on the forge host. To read a tree in a browser, use [`rgit view`](/docs/everyday-git/#browse-locally) on this machine.
 
 If you know `git clone`, `git commit`, and `git push`, start at the top and follow the pages in order. Each page has copy-paste examples (`git.example.com`, user `ada`, repo `ada/website`).
 
@@ -21,7 +21,7 @@ If you know `git clone`, `git commit`, and `git push`, start at the top and foll
 3. [Start the forge](/docs/start-the-forge/) — pack-and-push or manual `init` / `serve`, then first admin and key
 4. [Set up a remote repository](/docs/remote-repository/) — create `owner/name`, add `origin`, first push or clone
 5. [Users and roles](/docs/users-and-roles/) — add people, register keys, grant and revoke `read` / `write` / `admin`
-6. [Everyday git](/docs/everyday-git/) — clone, branches, protected `main` / `master`
+6. [Everyday git](/docs/everyday-git/) — clone, branches, protected `main` / `master`, local `rgit view`
 7. [Merge requests](/docs/merge-requests/) — propose, review, fast-forward merge
 8. [CI workflows](/docs/ci-workflows/) — `.rabun/workflows` on push, tag, and request
 9. [Command reference](/docs/commands/) — CLI and SSH cheat sheet

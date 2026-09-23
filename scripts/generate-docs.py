@@ -16,7 +16,7 @@ SITE = Path(__file__).resolve().parents[1]
 SOURCE = Path(os.environ.get("RABUN_GIT_DIR", SITE.parent / "rabun-git"))
 DOC = SOURCE / "doc"
 OUT = SITE / "content" / "docs"
-REPO = "https://github.com/Burton-Workspaces/rabun-git/blob/master/"
+REPO = "https://github.com/rconnelly/rgit/blob/master/"
 
 # Guide order from doc/README.md. Operator pages follow the walkthrough.
 PAGES = [
