@@ -51,4 +51,4 @@ secondary_path = "/docs/compared-to-github/"
 
 Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, builder agents, and [version releases](/docs/versioning/). [`rgit view`](/docs/everyday-git/#browse-locally) shows the files in a browser on the machine that has the checkout.
 
-Tagged builds are on [GitHub Releases](https://github.com/rconnelly/rgit/releases). This site also keeps a [releases](/releases/) page with install commands.
+[GitHub Releases](https://github.com/rconnelly/rgit/releases).
