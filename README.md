@@ -18,7 +18,7 @@ The palette is Rabun's mountain mark: cream `#faf3d8`, gold `#c4a04a`, sage `#7a
 | `scripts/build.sh` | Regenerate docs, `rsites build`, pack `dist/rgit-site.tar.gz` |
 | `deploy/digitalocean/` | Droplet install and Caddy virtual host |
 
-The forge binary itself is deployed from the rabun-git repo (`deploy/ubuntu/`). These scripts publish this static site, including the source tarball on the release page.
+The forge binary itself is deployed from the rabun-git repo (`deploy/ubuntu/`). These scripts publish this static site. Tagged rgit builds live on GitHub Releases unless you switch `[extra.releases]` to pack a source tarball here.
 
 ## Requirements
 
@@ -45,13 +45,18 @@ python3 scripts/generate-docs.py
 rsites serve
 ```
 
-That is Zola's live server (not Caddy). After content or nav changes run `rsites check`. `./scripts/build.sh` regenerates the guide, packs a source tarball of rabun-git `master` from GitHub, then writes `public/` and `dist/rgit-site.tar.gz`.
+That is Zola's live server (not Caddy). After content or nav changes run `rsites check`. `./scripts/build.sh` regenerates the guide, writes the releases page (GitHub link or packed tarball), then writes `public/` and `dist/rgit-site.tar.gz`.
 
-## Source release
+## Releases
 
-`scripts/pack-source.sh` fetches `master` from GitHub (`git@github.com:Burton-Workspaces/rabun-git.git`, override with `RABUN_GIT_URL`) and writes a source-only archive under `static/releases/`. If that GitHub remote is missing, it packs the local checkout's `master` commit (`../rabun-git`, override with `RABUN_GIT_DIR`) and does not fetch or update that checkout. The release page is generated at `content/releases.md`. The tarball is not committed. `./scripts/build.sh` includes it in `public/`, and the DigitalOcean upload publishes it at `/releases/` next to the rest of the site.
+`[extra.releases]` in `zola.toml` chooses how this site points at rgit builds. The associated public GitHub repo is [rconnelly/rgit](https://github.com/rconnelly/rgit).
 
-The script refuses any remote that is not on `github.com`, so it will not talk to a Rabun Git forge.
+| `mode` | What visitors get |
+| --- | --- |
+| `github` (this site) | Header **Releases** and `content/releases.md` link to GitHub Releases. No tarball is packed. |
+| `pack` | `scripts/pack-source.sh` fetches `master` and hosts a source-only archive under `static/releases/`. Set the nav path back to `/releases/`. |
+
+`python3 scripts/sync-releases.py` applies the configured mode (`RELEASES_MODE` / `RELEASES_URL` override). `pack-source.sh` fetches GitHub (`git@github.com:Burton-Workspaces/rabun-git.git`, override with `RABUN_GIT_URL`). If that remote is missing, it packs the local checkout's `master` (`../rabun-git`, `RABUN_GIT_DIR`) and does not update that checkout. The tarball is not committed. The script refuses any remote that is not on `github.com`, so it will not talk to a Rabun Git forge.
 
 ## Caddy
 
@@ -100,7 +105,7 @@ Ubuntu 24.04 LTS. Point an A record for **rgit.burtonapp.com** at the droplet IP
 
 | Path | Role |
 | --- | --- |
-| `/var/www/rgit-site` | published `public/` tree, including `/releases/*.tar.gz` |
+| `/var/www/rgit-site` | published `public/` tree (and `/releases/*.tar.gz` only in `pack` mode) |
 | `/etc/caddy/sites-enabled/rgit-site.caddy` | virtual host |
 | `/etc/caddy/Caddyfile` | `import /etc/caddy/sites-enabled/*` plus any sites you already had |
 | `/etc/rgit-site/site.env` | health-check URL and `Host` header |

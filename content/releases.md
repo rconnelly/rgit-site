@@ -1,25 +1,32 @@
 +++
 title = "Releases"
-description = "Source tarball of the rabun-git master branch."
+description = "Tagged SemVer builds of Rabun Git on GitHub."
 
 [extra]
 generated = true
-source = "scripts/pack-source.sh"
+source = "scripts/sync-releases.py"
 +++
 
-Source snapshot of the `master` commit used to build this site. Crate version **0.12.1**, commit `4a7e2c4e80ae` (`2026-09-23`). The archive is the git tree of that commit, with no build output.
+Binaries and source archives are on [GitHub Releases](https://github.com/rconnelly/rgit/releases). Tags are SemVer 2.0.0 with a `v` prefix and must match `Cargo.toml`. Pushing a tag publishes `rabun-git-<tag>-x86_64-unknown-linux-gnu.tar.gz`.
 
-Unpack it and install from the checkout:
+Latest stable onto an Ubuntu host:
 
 ```bash
-tar -xzf rabun-git-0.12.1-4a7e2c4e80ae.tar.gz
-cd rabun-git
+./deploy/ubuntu/push.sh --bootstrap user@HOST
+```
+
+Pin a version:
+
+```bash
+./deploy/ubuntu/push.sh --bootstrap user@HOST v0.12.1
+```
+
+Build from a clone:
+
+```bash
+git clone https://github.com/rconnelly/rgit.git
+cd rgit
 ./scripts/install.sh
 ```
 
-| Archive | SHA-256 |
-| --- | --- |
-| [rabun-git-0.12.1-4a7e2c4e80ae.tar.gz](/releases/rabun-git-0.12.1-4a7e2c4e80ae.tar.gz) | `8402572a07ed6787cb1ab8342defa2118e0a3f7b7b84b575b4e198f65e1e84bf` |
-| [rabun-git-latest.tar.gz](/releases/rabun-git-latest.tar.gz) | `8402572a07ed6787cb1ab8342defa2118e0a3f7b7b84b575b4e198f65e1e84bf` |
-
-Both files are this same snapshot. Full commit `4a7e2c4e80aedfd0c6dac1d55a524d70815d5d24`. Checksums: [SHA256SUMS](/releases/SHA256SUMS).
+The repository is [rconnelly/rgit](https://github.com/rconnelly/rgit).

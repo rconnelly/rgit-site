@@ -2,6 +2,9 @@
 # Fetch rabun-git master from GitHub and pack a source tarball for the release page.
 # Source only: no cargo build, and this script never contacts a Rabun Git forge.
 #
+# Prefer `python3 scripts/sync-releases.py` from build.sh. That script calls this
+# one only when zola.toml [extra.releases] mode is "pack".
+#
 #   ./scripts/pack-source.sh
 #   RABUN_GIT_URL=git@github.com:Burton-Workspaces/rabun-git.git ./scripts/pack-source.sh
 set -euo pipefail

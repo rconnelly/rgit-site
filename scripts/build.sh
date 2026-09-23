@@ -10,7 +10,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 python3 "$ROOT/scripts/generate-docs.py"
-"$ROOT/scripts/pack-source.sh"
+python3 "$ROOT/scripts/sync-releases.py"
 rsites check
 rsites build
 

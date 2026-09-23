@@ -7,7 +7,8 @@ compile_sass = true
 
 [link_checker]
 skip_prefixes = [
-  "https://github.com/Burton-Workspaces/",
+    "https://github.com/Burton-Workspaces/",
+    "https://github.com/rconnelly/rgit",
 ]
 
 [markdown.highlighting]
@@ -32,11 +33,17 @@ links = [
   { name = "GitHub", path = "https://github.com/rconnelly/rgit", icon = "github" },
 ]
 
+[extra.releases]
+# github: link GitHub Releases for the associated repo. pack: host a source tarball.
+mode = "github"
+repo = "https://github.com/rconnelly/rgit"
+url = "https://github.com/rconnelly/rgit/releases"
+
 [extra.devlab.navigation]
 links = [
   { name = "Home", path = "/" },
   { name = "Docs", kind = "docs" },
-  { name = "Releases", path = "/releases/" },
+  { name = "Releases", path = "https://github.com/rconnelly/rgit/releases" },
   { name = "Burton", path = "https://www.burtonapp.com" },
 ]
 
