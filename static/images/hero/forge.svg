@@ -32,5 +32,5 @@
   <text x="132" y="388" fill="#faf3d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28">git remote add origin ssh://git@HOST:2222/ada/website.git</text>
   <text x="96" y="448" fill="#7a9e6e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28">$</text>
   <text x="132" y="448" fill="#faf3d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28">git push -u origin master</text>
-  <text x="96" y="528" fill="#c4a04a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26">SSH remotes / merge requests / YAML workflows</text>
+  <text x="96" y="528" fill="#c4a04a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26">SSH remotes / merge requests / builder agents</text>
 </svg>

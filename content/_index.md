@@ -1,6 +1,6 @@
 +++
 title = "A git forge you run yourself."
-description = "Self-hosted git over SSH. Users, merge requests, and a small workflow runner. Bring your own editor and web viewer."
+description = "Self-hosted git over SSH. Users, merge requests, and workflow agents on your machines. Bring your own editor and web viewer."
 
 [extra]
 home_layout = "wide"
@@ -14,7 +14,7 @@ home_secondary_action_path = "/docs/"
 home_features = [
   { kicker = "Remote", title = "SSH repositories", description = "Bare repos on port 2222. Clone and push with ordinary git. Your existing sshd on port 22 stays put." },
   { kicker = "Review", title = "Merge requests", description = "Open, review, and fast-forward merge from the CLI. Protected main and master stay with admins." },
-  { kicker = "CI", title = "YAML workflows", description = "Small shell workflows in .rabun/workflows on push, tag, and request. No GitHub Actions runner." },
+  { kicker = "CI", title = "YAML workflows", description = "Shell steps in .rabun/workflows on push, tag, and request. runs-on fans out to Linux, macOS, and Windows." },
 ]
 
 [extra.home_learn]
@@ -25,6 +25,7 @@ cards = [
   { kicker = "People", title = "Users and keys", description = "Create logins, attach SSH keys, and grant read, write, or admin on owner/name." },
   { kicker = "History", title = "Everyday git", description = "Branches, clones, and tags work as they do on any SSH remote." },
   { kicker = "Host", title = "Ubuntu pack and push", description = "Ship the binary, env file, and rabun-git.service over SSH. Data lives under /var/lib/rabun-git." },
+  { kicker = "Builders", title = "Agents on your machines", description = "rgit agent polls the forge over SSH, claims a queued label, clones that SHA, and reports the log." },
 ]
 
 [extra.home_workflow]
@@ -46,4 +47,4 @@ secondary_label = "Compared to GitHub"
 secondary_path = "/docs/compared-to-github/"
 +++
 
-Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, and merge requests.
+Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, and builder agents.

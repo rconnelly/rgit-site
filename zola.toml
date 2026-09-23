@@ -1,6 +1,6 @@
 base_url = "https://rgit.burtonapp.com"
 title = "Rabun Git"
-description = "Self-hosted git forge. SSH remotes, merge requests, and YAML workflows. rgit is the short command."
+description = "Self-hosted git forge. SSH remotes, merge requests, and YAML workflows on your own builders."
 theme = "devlab-theme"
 
 compile_sass = true
