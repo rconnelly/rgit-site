@@ -102,6 +102,12 @@ Ubuntu 24.04 LTS. Point an A record for **docs.rgit.rs** at the droplet IPv4. Fi
 ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz root@DROPLET_IP
 ```
 
+To take over a hostname another Caddy snippet already serves:
+
+```bash
+./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz --domain docs.rgit.rs --overwrite root@DROPLET_IP
+```
+
 ### Layout on the droplet
 
 | Path | Role |
@@ -115,7 +121,7 @@ Logs: `journalctl -u caddy -f`. Do not wipe `/var/lib/caddy` (ACME store).
 
 ## Ubuntu (bare metal)
 
-Same archive on an x86_64 Ubuntu host that may already run other Caddy sites. The server never talks to GitHub. Bootstrap does not replace an existing Caddyfile, does not enable ufw unless it is already active (or `SITE_ENABLE_UFW=1`), and refuses a `--domain` that another Caddy snippet already serves.
+Same archive on an x86_64 Ubuntu host that may already run other Caddy sites. The server never talks to GitHub. Bootstrap does not replace an existing Caddyfile, does not enable ufw unless it is already active (or `SITE_ENABLE_UFW=1`), and refuses a `--domain` that another Caddy snippet already serves unless you pass `--overwrite`.
 
 This is the sibling of the DigitalOcean droplet path above. The forge binary still deploys from the rabun-git repo (`deploy/ubuntu/` there). These scripts only publish the static site.
 
@@ -153,6 +159,14 @@ Do **not** `curl | bash` the bootstrap script from `raw.githubusercontent.com`.
 ```bash
 ./deploy/ubuntu/push.sh --pack user@HOST
 ```
+
+To move this site onto a hostname another Caddy snippet already serves (for example `rgit.rs` → `docs.rgit.rs`):
+
+```bash
+./deploy/ubuntu/push.sh --pack --domain docs.rgit.rs --overwrite user@HOST
+```
+
+That rewrites `rgit-site.caddy`, removes the other snippet's claim on that hostname (backup next to the old file), and reloads Caddy. Do **not** use `--bootstrap` for a domain move; bootstrap is first-time host setup.
 
 Two-step (inspect the archive first):
 

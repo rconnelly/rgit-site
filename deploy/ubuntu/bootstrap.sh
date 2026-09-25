@@ -7,7 +7,8 @@
 # This host may already run other Caddy sites. Bootstrap does not replace a
 # Caddyfile that already has other sites. It does not enable ufw unless it is
 # already active or SITE_ENABLE_UFW=1. --domain must be a unique Caddy virtual
-# host; a collision is refused instead of restarting Caddy.
+# host; a collision is refused instead of restarting Caddy. Pass SITE_OVERWRITE=1
+# (push.sh --overwrite) to take that hostname from another snippet.
 #
 #   sudo SITE_ARCHIVE=/path/to/rgit-site.tar.gz ./bootstrap.sh
 set -euo pipefail

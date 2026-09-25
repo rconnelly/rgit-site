@@ -5,18 +5,22 @@
 #   ./scripts/build.sh
 #   ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz --bootstrap root@1.2.3.4
 #   ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz root@1.2.3.4
+#   ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz --domain docs.rgit.rs --overwrite root@1.2.3.4
 #
 # --domain defaults to docs.rgit.rs on --bootstrap.
+# --overwrite takes --domain from another Caddy snippet (domain moves).
 set -euo pipefail
 
 BOOTSTRAP=0
 DOMAIN=""
 ARCHIVE=""
+OVERWRITE=0
 SSH_PORT="${SITE_SSH_PORT:-22}"
 
 usage() {
-  echo "usage: $0 --archive FILE [--bootstrap] [--domain FQDN] [--port N] user@host" >&2
+  echo "usage: $0 --archive FILE [--bootstrap] [--domain FQDN] [--overwrite] [--port N] user@host" >&2
   echo "--domain defaults to docs.rgit.rs on --bootstrap" >&2
+  echo "--overwrite takes --domain from another Caddy snippet (requires --domain)" >&2
   exit 2
 }
 
@@ -24,6 +28,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --bootstrap) BOOTSTRAP=1; shift ;;
     --domain) DOMAIN="${2:-}"; shift 2 ;;
+    --overwrite) OVERWRITE=1; shift ;;
     --archive) ARCHIVE="${2:-}"; shift 2 ;;
     --port) SSH_PORT="${2:-}"; shift 2 ;;
     -h | --help) usage ;;
@@ -36,6 +41,10 @@ done
 TARGET_HOST="${1:-}"
 if [[ -z "$TARGET_HOST" || -z "$ARCHIVE" ]]; then
   usage
+fi
+if [[ "$OVERWRITE" -eq 1 && -z "$DOMAIN" ]]; then
+  echo "--overwrite requires --domain" >&2
+  exit 1
 fi
 if [[ ! -f "$ARCHIVE" ]]; then
   echo "archive not found: ${ARCHIVE}" >&2
@@ -77,10 +86,10 @@ if [[ "$BOOTSTRAP" -eq 1 ]]; then
     DOMAIN="docs.rgit.rs"
   fi
   echo "bootstrapping ${TARGET_HOST} (Caddy vhost ${DOMAIN})"
-  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_ENABLE_UFW=$(printf '%q' "${SITE_ENABLE_UFW:-}") CADDY_EMAIL=$(printf '%q' "${CADDY_EMAIL:-}") bash $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh"
+  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_OVERWRITE=$(printf '%q' "$OVERWRITE") SITE_ENABLE_UFW=$(printf '%q' "${SITE_ENABLE_UFW:-}") CADDY_EMAIL=$(printf '%q' "${CADDY_EMAIL:-}") bash $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh"
 else
   echo "installing rgit-site on ${TARGET_HOST}"
-  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") bash $(printf '%q' "$REMOTE_DIR")/deploy/install.sh"
+  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_OVERWRITE=$(printf '%q' "$OVERWRITE") bash $(printf '%q' "$REMOTE_DIR")/deploy/install.sh"
 fi
 remote "rm -rf $(printf '%q' "$REMOTE_DIR")"
 echo "done"

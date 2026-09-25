@@ -4,24 +4,28 @@
 #
 #   ./deploy/ubuntu/push.sh --pack --bootstrap --domain docs.rgit.rs user@host
 #   ./deploy/ubuntu/push.sh --archive dist/rgit-site.tar.gz user@host
+#   ./deploy/ubuntu/push.sh --pack --domain docs.rgit.rs --overwrite user@host
 #   ./deploy/ubuntu/push.sh --pack --bootstrap --domain damascus --tls lan user@192.168.0.18
 #
 # Omit --domain on --bootstrap to listen on :8080.
 # --pack builds public/ from this checkout (rsites).
+# --overwrite takes --domain from another Caddy snippet (domain moves).
 set -euo pipefail
 
 BOOTSTRAP=0
 DOMAIN=""
 ARCHIVE=""
 PACK=0
+OVERWRITE=0
 EMAIL="${CADDY_EMAIL:-}"
 TLS_MODE="${SITE_TLS:-}"
 SSH_PORT="${SITE_SSH_PORT:-22}"
 
 usage() {
-  echo "usage: $0 [--bootstrap] [--domain FQDN] [--tls lan] [--archive FILE] [--pack] [--port N] user@host" >&2
+  echo "usage: $0 [--bootstrap] [--domain FQDN] [--overwrite] [--tls lan] [--archive FILE] [--pack] [--port N] user@host" >&2
   echo "--domain is the Caddy virtual host on --bootstrap (default :8080)" >&2
   echo "--domain :8080 skips TLS and binds Caddy on that port" >&2
+  echo "--overwrite takes --domain from another Caddy snippet (requires --domain)" >&2
   echo "--tls lan uses Caddy's local CA on a private LAN (no Let's Encrypt)" >&2
   echo "--pack builds a public/ archive from this checkout" >&2
   echo "--archive FILE installs that tarball instead of packing" >&2
@@ -32,6 +36,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --bootstrap) BOOTSTRAP=1; shift ;;
     --domain) DOMAIN="${2:-}"; shift 2 ;;
+    --overwrite) OVERWRITE=1; shift ;;
     --tls)
       TLS_MODE="${2:-}"
       shift 2
@@ -49,6 +54,10 @@ done
 TARGET_HOST="${1:-}"
 if [[ -z "$TARGET_HOST" ]]; then
   usage
+fi
+if [[ "$OVERWRITE" -eq 1 && -z "$DOMAIN" ]]; then
+  echo "--overwrite requires --domain" >&2
+  exit 1
 fi
 if [[ -n "$TLS_MODE" ]]; then
   TLS_MODE="${TLS_MODE,,}"
@@ -139,10 +148,10 @@ remote "chmod +x $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh $(printf '%q' 
 REMOTE_ARCHIVE="${REMOTE_DIR}/site.tar.gz"
 if [[ "$BOOTSTRAP" -eq 1 ]]; then
   echo "bootstrapping ${TARGET_HOST}${DOMAIN:+ (Caddy vhost ${DOMAIN})}"
-  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_ENABLE_UFW=$(printf '%q' "${SITE_ENABLE_UFW:-}") SITE_TLS=$(printf '%q' "$TLS_MODE") CADDY_EMAIL=$(printf '%q' "$EMAIL") bash $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh"
+  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_OVERWRITE=$(printf '%q' "$OVERWRITE") SITE_ENABLE_UFW=$(printf '%q' "${SITE_ENABLE_UFW:-}") SITE_TLS=$(printf '%q' "$TLS_MODE") CADDY_EMAIL=$(printf '%q' "$EMAIL") bash $(printf '%q' "$REMOTE_DIR")/deploy/bootstrap.sh"
 else
   echo "installing rgit-site on ${TARGET_HOST}"
-  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_TLS=$(printf '%q' "$TLS_MODE") bash $(printf '%q' "$REMOTE_DIR")/deploy/install.sh"
+  remote_sudo "sudo env SITE_ARCHIVE=$(printf '%q' "$REMOTE_ARCHIVE") SITE_DOMAIN=$(printf '%q' "$DOMAIN") SITE_OVERWRITE=$(printf '%q' "$OVERWRITE") SITE_TLS=$(printf '%q' "$TLS_MODE") bash $(printf '%q' "$REMOTE_DIR")/deploy/install.sh"
 fi
 remote "rm -rf $(printf '%q' "$REMOTE_DIR")"
 echo "done"
