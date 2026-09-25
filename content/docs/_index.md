@@ -10,7 +10,7 @@ generated = true
 source = "doc/README.md"
 +++
 
-Rgit is Git with etiquette. Run a git forge on a machine you own: SSH remotes, users, merge requests, a small CI runner, and Conventional Commits / SemVer 2.0 by default ([turn that off](/docs/versioning/#disable-etiquette)). `rgit serve` has no HTTP git UI. Browse locally with [`rgit view`](/docs/everyday-git/#browse-locally), or add [Rgit Web](https://rgit.rs/web/) as a companion.
+Rgit is Git with etiquette. Run a git forge on a machine you own: SSH remotes, users, merge requests, a small CI runner, and Conventional Commits / SemVer 2.0 by default ([turn that off](/docs/versioning/#disable-etiquette)). `rgit serve` has no HTTP git UI. Browse locally with [`rgit view`](/docs/everyday-git/#browse-locally), or add [Rgit Web](https://docs.rgit.rs/web/) as a companion.
 
 If you know `git clone`, `git commit`, and `git push`, follow the pages in order. Examples use `git.example.com`, user `ada`, repo `ada/website`.
 

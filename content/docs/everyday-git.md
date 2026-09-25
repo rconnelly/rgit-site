@@ -27,7 +27,7 @@ You need at least **read**. The clone includes all branches the server has. Merg
 
 ## Browse locally
 
-`rgit serve` has no HTTP git UI. Preview a working copy (or a readable bare repo) on this machine with Zola on loopback. Needs **git** and **Zola 0.23.4+** on PATH. First run fetches the DevLab theme into `~/.cache/rabun-git/themes/`. For a public GitHub-style UI, see [Rgit Web](https://rgit.rs/web/).
+`rgit serve` has no HTTP git UI. Preview a working copy (or a readable bare repo) on this machine with Zola on loopback. Needs **git** and **Zola 0.23.4+** on PATH. First run fetches the DevLab theme into `~/.cache/rabun-git/themes/`. For a public GitHub-style UI, see [Rgit Web](https://docs.rgit.rs/web/).
 
 ```bash
 cd website

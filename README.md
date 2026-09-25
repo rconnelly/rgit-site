@@ -1,6 +1,6 @@
 # Rabun Git
 
-Showcase and documentation site for [Rabun Git](https://github.com/Burton-Workspaces/rabun-git) (`rgit`), a self-hosted git forge. Production URL: [https://rgit.rs](https://rgit.rs).
+Showcase and documentation site for [Rabun Git](https://github.com/Burton-Workspaces/rabun-git) (`rgit`), a self-hosted git forge. Production URL: [https://docs.rgit.rs](https://docs.rgit.rs).
 
 This repository is an [rsites](https://github.com/Burton-Workspaces/rabun-sites) site: [Zola](https://www.getzola.org/) content, [DevLab](https://codeberg.org/RiPetitor/devlab-theme) pinned as a git submodule, and [Caddy](https://caddyserver.com/) for production. The `rsites` CLI lives in **rabun-sites** (`rabun-sites` the crate, `rsites` on PATH).
 
@@ -61,7 +61,7 @@ That is Zola's live server (not Caddy). After content or nav changes run `rsites
 
 ## Caddy
 
-Caddy serves the built `public/` tree in production. Hostname and document root come from `rsites.toml` (`rgit.rs`, `/var/www/rgit-site`).
+Caddy serves the built `public/` tree in production. Hostname and document root come from `rsites.toml` (`docs.rgit.rs`, `/var/www/rgit-site`).
 
 ```bash
 rsites caddy render
@@ -76,7 +76,7 @@ The checked-in snippet [`deploy/digitalocean/rgit-site.caddy`](deploy/digitaloce
 Same pattern as burton-site: the droplet never clones this private repo. A laptop builds `public/`, copies a tarball over SSH, and Caddy `file_server`s `/var/www/rgit-site`.
 
 ```
-Internet → rgit.rs → Caddy :443 → /var/www/rgit-site
+Internet → docs.rgit.rs → Caddy :443 → /var/www/rgit-site
         → (sibling hostnames) → Caddy :443 → other site files
 ```
 
@@ -84,7 +84,7 @@ Bootstrap writes `/etc/caddy/sites-enabled/rgit-site.caddy` and adds `import /et
 
 ### 1. Create the droplet
 
-Ubuntu 24.04 LTS. Point an A record for **rgit.rs** at the droplet IPv4. Firewall: 22, 80, and 443.
+Ubuntu 24.04 LTS. Point an A record for **docs.rgit.rs** at the droplet IPv4. Firewall: 22, 80, and 443.
 
 ### 2. Bootstrap (once)
 
@@ -93,7 +93,7 @@ Ubuntu 24.04 LTS. Point an A record for **rgit.rs** at the droplet IPv4. Firewal
 ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz --bootstrap root@DROPLET_IP
 ```
 
-`--domain` defaults to `rgit.rs`. Set `CADDY_EMAIL` if this host's Caddyfile is new and should register an ACME account.
+`--domain` defaults to `docs.rgit.rs`. Set `CADDY_EMAIL` if this host's Caddyfile is new and should register an ACME account.
 
 ### 3. Later updates
 
@@ -131,7 +131,7 @@ Ubuntu 24.04 LTS (or 26.04), x86_64. SSH as `root` or a sudoer. From a laptop, `
 ### 2. Bootstrap (once)
 
 ```bash
-./deploy/ubuntu/push.sh --pack --bootstrap --domain rgit.rs user@HOST
+./deploy/ubuntu/push.sh --pack --bootstrap --domain docs.rgit.rs user@HOST
 ```
 
 Omit `--domain` to listen on **:8080**. On a LAN hostname that cannot use Let's Encrypt:

@@ -8,7 +8,7 @@ generated = true
 source = "doc/what-it-is.md"
 +++
 
-Rgit is Git with etiquette. Rabun Git is a **git forge you run yourself**. [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and [SemVer 2.0](https://semver.org/spec/v2.0.0.html) are the default. Teammates clone and push over SSH. You manage people, keys, and permissions from the command line. Nothing is sent to GitHub.com. `rgit serve` has no HTTP git UI; [`rgit view`](/docs/everyday-git/#browse-locally) previews a local tree. [Rgit Web](https://rgit.rs/web/) is a separate companion.
+Rgit is Git with etiquette. Rabun Git is a **git forge you run yourself**. [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and [SemVer 2.0](https://semver.org/spec/v2.0.0.html) are the default. Teammates clone and push over SSH. You manage people, keys, and permissions from the command line. Nothing is sent to GitHub.com. `rgit serve` has no HTTP git UI; [`rgit view`](/docs/everyday-git/#browse-locally) previews a local tree. [Rgit Web](https://docs.rgit.rs/web/) is a separate companion.
 
 This guide assumes you already know a little git: commits, branches, and that a **remote** is another copy of a repository you can push to and fetch from.
 

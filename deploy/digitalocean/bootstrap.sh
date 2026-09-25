@@ -4,8 +4,8 @@
 # Does not fetch the private GitHub repo. Does not install the rabun-git forge
 # (that stays deploy/ubuntu in the rabun-git checkout).
 #
-# Safe on a host that already runs other Caddy sites: it installs an
-# rgit.rs virtual host and does not replace unrelated site blocks.
+# Safe on a host that already runs other Caddy sites: it installs a
+# docs.rgit.rs virtual host and does not replace unrelated site blocks.
 #
 #   sudo SITE_ARCHIVE=/path/to/rgit-site.tar.gz ./bootstrap.sh
 set -euo pipefail

@@ -2,7 +2,7 @@
 # Copy a built public/ archive onto a bare-metal Ubuntu server over SSH.
 # The server never talks to GitHub. Run this from a clone on a laptop.
 #
-#   ./deploy/ubuntu/push.sh --pack --bootstrap --domain rgit.rs user@host
+#   ./deploy/ubuntu/push.sh --pack --bootstrap --domain docs.rgit.rs user@host
 #   ./deploy/ubuntu/push.sh --archive dist/rgit-site.tar.gz user@host
 #   ./deploy/ubuntu/push.sh --pack --bootstrap --domain damascus --tls lan user@192.168.0.18
 #
