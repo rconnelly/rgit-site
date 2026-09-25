@@ -101,3 +101,39 @@ html[data-brand="rabun"][data-theme="dark"] {
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
+.home-page-wide .home-article {
+  width: min(100% - var(--wide-gutter), var(--wide-width));
+  max-width: none;
+  margin: var(--space-16) auto 0;
+}
+
+.home-page-wide .home-article.content {
+  max-width: none;
+}
+
+.home-page-wide .home-article.content > :not(h1):not(h2):not(h3):not(h4):not(table):not(pre):not(.code-block) {
+  max-width: 68ch;
+}
+
+.home-page-wide .home-article h2 {
+  margin-top: var(--space-12);
+}
+
+@media (max-width: 760px) {
+  .home-page-wide .home-article {
+    width: min(100% - var(--wide-gutter-compact), var(--wide-width));
+  }
+}
+
+.downloads-methods.content {
+  max-width: none;
+}
+
+.downloads-methods.content > :not(h1):not(h2):not(h3):not(h4):not(table):not(pre):not(.code-block) {
+  max-width: 68ch;
+}
+
+.downloads-methods h2:first-child {
+  margin-top: 0;
+}

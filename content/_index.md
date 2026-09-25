@@ -8,7 +8,7 @@ home_eyebrow = "Rabun Git"
 home_hero_image = "/images/hero/forge.svg"
 home_hero_image_alt = "Terminal session: rgit registers an admin key, then git pushes to ssh."
 home_primary_action_label = "Install"
-home_primary_action_path = "/docs/install/"
+home_primary_action_path = "/install/"
 home_secondary_action_label = "User guide"
 home_secondary_action_path = "/docs/"
 home_features = [
@@ -16,7 +16,7 @@ home_features = [
   { kicker = "Remote", title = "SSH repositories", description = "Bare repos on port 2222. Clone and push with ordinary git. Your existing sshd on port 22 stays put." },
   { kicker = "Review", title = "Merge requests", description = "Open, review, and fast-forward merge from the CLI. Protected main and master stay with admins." },
   { kicker = "CI", title = "YAML workflows", description = "Shell steps in .rabun/workflows on push, tag, and request. A runs-on list starts one run each on Linux, macOS, and Windows." },
-  { kicker = "Files", title = "Web view", description = "rgit view renders a local tree in the browser: README, file tree, and file contents." },
+  { kicker = "Browser", title = "Rgit Web", description = "Optional GitHub-style companion to the CLI. Browse, blame, and review — or skip it and bring your own web view." },
 ]
 
 [extra.home_learn]
@@ -44,11 +44,10 @@ points = [
 title = "Read the guide, then start the forge."
 description = "Written for people who already use git clone, commit, and push."
 primary_label = "Install"
-primary_path = "/docs/install/"
-secondary_label = "Compared to GitHub"
-secondary_path = "/docs/compared-to-github/"
+primary_path = "/install/"
+secondary_path = ""
 +++
 
-Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, builder agents, and [version releases](/docs/versioning/). [`rgit view`](/docs/everyday-git/#browse-locally) shows the files in a browser on the machine that has the checkout.
+Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, builder agents, and [version releases](/docs/versioning/). [Rgit Web](/web/) is an optional companion UI. [`rgit view`](/docs/everyday-git/#browse-locally) is a local tree preview. Neither is required; you can bring your own web view.
 
-[GitHub Releases](https://github.com/rconnelly/rgit/releases).
+[Install](/install/) a Linux archive, or [build from source](https://github.com/rconnelly/rgit) on GitHub.
