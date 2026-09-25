@@ -1,6 +1,6 @@
 +++
 title = "Start the forge"
-description = "Replace ada with your login and git.example.com with the hostname or IP of the machine that will store repositories."
+description = "Start serve, then add the first admin and that user’s SSH key."
 weight = 3
 
 [extra]
@@ -8,9 +8,9 @@ generated = true
 source = "doc/start-the-forge.md"
 +++
 
-Replace `ada` with your login and `git.example.com` with the hostname or IP of the machine that will store repositories.
+Start `serve`, then add the first admin and that user’s SSH key.
 
-There are two ways to get the forge listening. Both still need a **first admin user** and that user’s **first SSH public key** on the host.
+Replace `ada` with your login and `git.example.com` with the hostname or IP. There are two ways to get the forge listening:
 
 | | Pack and push (Ubuntu) | Manual |
 | --- | --- | --- |
@@ -47,6 +47,12 @@ Register the first admin and key from this machine (host SSH + sudo) or on the s
 ```bash
 rgit remote add origin git@HOST
 rgit origin key copy ada --admin --file ~/.ssh/id_ed25519.pub
+```
+
+If rgit-web is already up and `ada` has a web password, this machine can skip host SSH:
+
+```bash
+rgit login --host HOST --web https://HOST
 ```
 
 Or on the **server**:

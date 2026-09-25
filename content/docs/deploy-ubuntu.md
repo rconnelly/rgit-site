@@ -1,6 +1,6 @@
 +++
 title = "Ubuntu deploy"
-description = "rabun-git is a systemd unit plus a release archive on an x86_64 (or aarch64) Ubuntu host."
+description = "Install rabun-git as a systemd unit on x86_64 (or aarch64) Ubuntu."
 weight = 21
 
 [extra]
@@ -8,9 +8,9 @@ generated = true
 source = "doc/deploy-ubuntu.md"
 +++
 
-`rabun-git` is a systemd unit plus a release archive on an **x86_64 (or aarch64) Ubuntu** host. The same machine can already run Rabun: this forge sits beside `rabun.service`, keeps settings in its own env file, and upserts `[[apps]]` in `/etc/rabun/rabun.toml`. The host never talks to GitHub. This machine (or Actions) packs or downloads the archive and copies it over SSH.
+Install `rabun-git` as a systemd unit on **x86_64 (or aarch64) Ubuntu**. Pack or fetch a release, then copy over SSH. The host never talks to GitHub. The forge sits beside `rabun.service`, keeps settings in its own env file, and upserts `[[apps]]` in `/etc/rabun/rabun.toml`.
 
-There is no public HTTP git UI and no Caddy virtual host. `serve` listens for git and management commands on **TCP 2222** and writes a loopback companion heartbeat. To browse a tree in a browser, run `rgit view` on this machine (or on the host inside `rabun-git shell`); that is Zola on loopback, not a vhost.
+`serve` listens on **TCP 2222** and writes a loopback companion heartbeat. There is no Caddy vhost for git. Browse locally with `rgit view`, or run Rgit Web as a sibling.
 
 ## 1. Host
 
@@ -106,6 +106,8 @@ Refresh the env file without rewriting the example:
 | `/var/lib/rabun-git/status.json` | Companion heartbeat (`rabun.companion/v1`) |
 | `/etc/systemd/system/rabun-git.service` | `serve` (git SSH `0.0.0.0:2222`, loopback `GET /health` on `127.0.0.1:8792`) |
 | `/etc/rabun/rabun.toml` | Rabun app manifest (`[[apps]] name = "git"`) |
+
+To put `repos/` on a block volume without changing `RABUN_GIT_ROOT`, mount the disk at `/var/lib/rabun-git`: [storage volume](/docs/storage-volume/).
 
 The systemd user is `rabun-git`. Git clients still connect as `git@HOST` on port **2222** (russh; not the unix user). Admin SSH on port 22 is unchanged.
 

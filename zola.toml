@@ -1,6 +1,6 @@
 base_url = "https://rgit.rs"
 title = "Rabun Git"
-description = "Rgit is Git with etiquette. Self-hosted forge: SSH remotes, Conventional Commits, SemVer 2.0, merge requests, and YAML workflows."
+description = "Rgit is Git with etiquette. A self-hosted forge: SSH remotes, Conventional Commits, SemVer 2.0, merge requests, and YAML workflows."
 theme = "devlab-theme"
 
 compile_sass = true

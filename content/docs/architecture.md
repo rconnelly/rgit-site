@@ -1,6 +1,6 @@
 +++
-title = "rabun-git architecture"
-description = "How the forge is put together (layout, ACL, systemd)."
+title = "Architecture"
+description = "Layout, ACL, and systemd for operators."
 weight = 20
 
 [extra]
@@ -8,9 +8,9 @@ generated = true
 source = "doc/architecture.md"
 +++
 
-How the forge is put together (layout, ACL, systemd). For a beginner walkthrough with examples, start at the [user guide](/docs/).
+Layout, ACL, and systemd for operators. For a walkthrough, start at the [user guide](/docs/).
 
-Self-hosted git forge CLI. Burton and Rabun do not import this crate. Warehouse workers remain the writers of warehouse trees; this process is a **git remote** they may push to.
+Self-hosted git forge CLI. This process is a **git remote** you push to.
 
 ```
 This machine                     Your server
@@ -22,7 +22,7 @@ This machine                     Your server
                                  .rabun/workflows runner
 ```
 
-SSH is the only public network surface (default `0.0.0.0:2222`; russh username `git`). Loopback `GET /health` is companion heartbeat only (`127.0.0.1:8792`). There is no HTTP git UI on `serve`. On this machine, `rgit view` can render a local tree with Zola on loopback. The systemd user is `rabun-git`; admin SSH on port 22 is unchanged.
+SSH is the only public network surface (default `0.0.0.0:2222`; russh username `git`). Loopback `GET /health` is companion heartbeat only (`127.0.0.1:8792`). There is no HTTP git UI on `serve`. `rgit view` renders a local tree on loopback. The systemd user is `rabun-git`; admin SSH on port 22 is unchanged.
 
 ## Layout
 
@@ -31,6 +31,7 @@ SSH is the only public network surface (default `0.0.0.0:2222`; russh username `
 - `users.yaml` — login + forge admin flag + optional web password hash
 - `keys/<user>.pub` — OpenSSH public keys
 - `tokens.yaml` — SHA-256 hashes of web bearer tokens (`rgit_…`)
+- `devices.yaml` — pending CLI web sign-on grants (device-code hashes + public key)
 - `visibility.yaml` — `owner/name` → `public` (missing means private)
 - `access.yaml` — `owner/name` → user → `read` \| `write` \| `admin`
 - `repos/<owner>/<name>.git/` — bare repositories
@@ -65,7 +66,7 @@ Stored in git so they clone with the repo:
 
 ## systemd
 
-Pack this checkout and copy it onto Ubuntu over SSH (same flow as Burton and Rabun): [deploy Ubuntu](/docs/deploy-ubuntu/). The unit shipped in `deploy/ubuntu/rabun-git.service` runs as user `rabun-git` with forge data under `/var/lib/rabun-git`. Git clients still use `ssh://git@HOST:2222/…`.
+Pack this checkout and copy it onto Ubuntu over SSH (same flow as Burton and Rabun): [deploy Ubuntu](/docs/deploy-ubuntu/). The unit shipped in `deploy/ubuntu/rabun-git.service` runs as user `rabun-git` with forge data under `/var/lib/rabun-git`. Git clients still use `ssh://git@HOST:2222/…`. To move that directory onto a block volume, see [storage volume](/docs/storage-volume/).
 
 ```ini
 [Unit]

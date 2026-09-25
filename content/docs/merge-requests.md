@@ -1,6 +1,6 @@
 +++
 title = "Merge requests"
-description = "A merge request is “please fast-forward master (or main) to this branch.” There is no web form."
+description = "A merge request asks to fast-forward master or main to a branch."
 weight = 7
 
 [extra]
@@ -8,7 +8,7 @@ generated = true
 source = "doc/merge-requests.md"
 +++
 
-A merge request is “please fast-forward `master` (or `main`) to this branch.” There is no web form. Requests are stored **in the git repo** as refs, so they clone with the project.
+A merge request asks to fast-forward `master` or `main` to a branch. Requests are stored **in the git repo** as refs, so they clone with the project.
 
 You need **write** to open or comment. You need repo **admin** (or forge admin) to merge. Review `--approve` does not merge by itself.
 

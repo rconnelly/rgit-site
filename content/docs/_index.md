@@ -10,14 +10,14 @@ generated = true
 source = "doc/README.md"
 +++
 
-Rgit is Git with etiquette. Rabun Git is a git forge you run on a machine you own: SSH remotes, users and roles, merge requests, a small CI runner, and Conventional Commits / SemVer 2.0 by default ([how to turn that off](/docs/versioning/#disable-etiquette)). There is no website on the forge host. To read a tree in a browser, use [`rgit view`](/docs/everyday-git/#browse-locally) on this machine.
+Rgit is Git with etiquette. Run a git forge on a machine you own: SSH remotes, users, merge requests, a small CI runner, and Conventional Commits / SemVer 2.0 by default ([turn that off](/docs/versioning/#disable-etiquette)). `rgit serve` has no HTTP git UI. Browse locally with [`rgit view`](/docs/everyday-git/#browse-locally), or add [Rgit Web](https://rgit.rs/web/) as a companion.
 
-If you know `git clone`, `git commit`, and `git push`, start at the top and follow the pages in order. Each page has copy-paste examples (`git.example.com`, user `ada`, repo `ada/website`).
+If you know `git clone`, `git commit`, and `git push`, follow the pages in order. Examples use `git.example.com`, user `ada`, repo `ada/website`.
 
 ## Contents
 
 1. [What is Rabun Git?](/docs/what-it-is/) — how this compares to GitHub and a plain git remote
-2. [Install](/docs/install/) — build the `rabun-git` command
+2. [Install](/docs/install/) — install the `rabun-git` command
 3. [Start the forge](/docs/start-the-forge/) — pack-and-push or manual `init` / `serve`, then first admin and key
 4. [Set up a remote repository](/docs/remote-repository/) — create `owner/name`, add `origin`, first push or clone
 5. [Users and roles](/docs/users-and-roles/) — add people, register keys, grant and revoke `read` / `write` / `admin`
@@ -28,14 +28,14 @@ If you know `git clone`, `git commit`, and `git push`, start at the top and foll
 10. [Command reference](/docs/commands/) — CLI and SSH cheat sheet
 11. [Compared to GitHub](/docs/compared-to-github/) — feature and `gh` command gap analysis
 
-Operators who need on-disk layout, ACL internals, or systemd: [architecture](/docs/architecture/). Ubuntu pack/push: [deploy Ubuntu](/docs/deploy-ubuntu/).
+Layout, ACL, systemd: [architecture](/docs/architecture/). Ubuntu pack/push: [deploy Ubuntu](/docs/deploy-ubuntu/). Extra disk for `repos/`: [storage volume](/docs/storage-volume/).
 
-## Two jobs you will do
+## Start here
 
-| Job | Start here |
+| Job | Page |
 | --- | --- |
-| Put an existing or new project on the forge | [Remote repository](/docs/remote-repository/) (after the server is up) |
-| Let teammates in and control who can push | [Users and roles](/docs/users-and-roles/) |
+| Put a project on the forge | [Remote repository](/docs/remote-repository/) |
+| Let teammates in | [Users and roles](/docs/users-and-roles/) |
 
 Clone URL shape used throughout:
 
@@ -43,10 +43,10 @@ Clone URL shape used throughout:
 ssh://git@git.example.com:2222/ada/website.git
 ```
 
-Forge commands from this machine (`key copy` registers the first admin key over host SSH):
+Forge commands from this machine (`rgit login` attaches a key after website sign-in; `key copy` is host SSH for the first admin):
 
 ```bash
 rgit remote add origin git@git.example.com
-rgit origin key copy ada --admin
+rgit login --web https://git.example.com
 rgit origin repo list
 ```

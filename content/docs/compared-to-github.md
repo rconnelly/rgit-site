@@ -1,6 +1,6 @@
 +++
 title = "Compared to GitHub"
-description = "rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forward merge requests, in-repo shell CI, and SemVer 2.0 / Conventional Commits by default."
+description = "rgit hosts git: remotes, users and keys, path ACL, fast-forward merge requests, shell CI, and SemVer 2.0 / Conventional Commits by default."
 weight = 11
 
 [extra]
@@ -8,11 +8,11 @@ generated = true
 source = "doc/compared-to-github.md"
 +++
 
-rgit covers the git-hosting core: remotes, users and keys, path ACL, fast-forward merge requests, in-repo shell CI, and SemVer 2.0 / Conventional Commits by default. It is not a GitHub clone. There is no website on the forge host, and most GitHub products have no counterpart.
+rgit hosts git: remotes, users and keys, path ACL, fast-forward merge requests, shell CI, and SemVer 2.0 / Conventional Commits by default. It is not a GitHub clone. `serve` has no HTTP git UI; most GitHub products have no counterpart.
 
 `rgit` and `rabun-git` are the same program. Examples use `rgit` after `rgit remote add origin git@HOST`.
 
-A shorter map lives in [What is Rabun Git?](/docs/what-it-is/).
+Shorter map: [What is Rabun Git?](/docs/what-it-is/).
 
 ## Hosted git
 
@@ -28,8 +28,8 @@ A shorter map lives in [What is Rabun Git?](/docs/what-it-is/).
 
 | GitHub | `gh` | rgit | Gap |
 | --- | --- | --- | --- |
-| Sign-up, orgs, teams, SSO | `gh auth` | `rgit origin user add`; web invite sign-up (`auth register`) | No orgs, teams, or SSO |
-| SSH keys on the account | Settings / `gh ssh-key` | `rgit origin key copy` / `key add` / `key list` | First key via host SSH (`key copy`); fingerprints only; no deploy keys, PATs, or fine-grained tokens |
+| Sign-up, orgs, teams, SSO | `gh auth` | `rgit login` / web invite sign-up (`auth register`); `rgit origin user add` | No orgs, teams, or SSO |
+| SSH keys on the account | Settings / `gh ssh-key` | `rgit login` (web handshake), `rgit origin key copy` / `key add` / `key list` | First key via website or host SSH (`key copy`); fingerprints only; no deploy keys, PATs, or fine-grained tokens |
 | Collaborators (read/write/admin) | `gh api` / UI | `rgit origin access grant` / `revoke` | Three roles only; no CODEOWNERS; `main` / `master` are always protected |
 | Outside collaborators, GitHub Apps | — | — | None |
 
@@ -64,11 +64,11 @@ A shorter map lives in [What is Rabun Git?](/docs/what-it-is/).
 
 | `gh` | rgit |
 | --- | --- |
-| `gh auth login` | `rgit remote add origin git@HOST` then `rgit origin key copy --admin` |
+| `gh auth login` | `rgit login --web https://HOST` (or `rgit origin key copy --admin` without a website) |
 | `gh repo create` / `list` / `view` | `repo create` / `list` / `show` |
 | `gh repo clone` | `git clone ssh://git@HOST:2222/owner/name.git` |
 | `gh repo view` | `rgit view` (local Zola preview; not a hosted page) |
-| `gh ssh-key add` | `rgit origin key copy` (first key) or `key add USER --file ~/.ssh/id_ed25519.pub` |
+| `gh ssh-key add` | `rgit login` (attaches the generated key) or `rgit origin key copy` / `key add USER --file ~/.ssh/id_ed25519.pub` |
 | `gh pr create` / `list` / `view` / `review` / `merge` | `request create` / `list` / `show` / `review` / `merge` |
 | `gh run list` / `view` | `run list` / `show` / `logs` |
 | `gh api`, `gh issue`, `gh release`, `gh gist`, … | `rgit version release` covers local tagging/changelog; no GitHub Releases product on the forge |

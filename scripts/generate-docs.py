@@ -33,6 +33,7 @@ PAGES = [
     ("compared-to-github.md", 11),
     ("architecture.md", 20),
     ("deploy-ubuntu.md", 21),
+    ("storage-volume.md", 22),
 ]
 
 LINK = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")

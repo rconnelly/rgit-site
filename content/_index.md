@@ -1,6 +1,6 @@
 +++
 title = "Rgit is Git with etiquette."
-description = "Self-hosted git over SSH. Conventional Commits and SemVer 2.0 by default. Users, merge requests, and workflow agents on your machines."
+description = "Self-hosted Git over SSH. Conventional Commits and SemVer 2.0 by default."
 
 [extra]
 home_layout = "wide"
@@ -9,45 +9,45 @@ home_hero_image = "/images/hero/forge.svg"
 home_hero_image_alt = "Terminal session: rgit registers an admin key, then git pushes to ssh."
 home_primary_action_label = "Install"
 home_primary_action_path = "/install/"
-home_secondary_action_label = "User guide"
+home_secondary_action_label = "Docs"
 home_secondary_action_path = "/docs/"
 home_features = [
-  { kicker = "Etiquette", title = "SemVer 2.0", description = "Conventional Commits bump MAJOR.MINOR.PATCH. The forge can reject a messy push. Set enforce to false in .rabun/version.toml to turn those gates off." },
-  { kicker = "Remote", title = "SSH repositories", description = "Bare repos on port 2222. Clone and push with ordinary git. Your existing sshd on port 22 stays put." },
-  { kicker = "Review", title = "Merge requests", description = "Open, review, and fast-forward merge from the CLI. Protected main and master stay with admins." },
-  { kicker = "CI", title = "YAML workflows", description = "Shell steps in .rabun/workflows on push, tag, and request. A runs-on list starts one run each on Linux, macOS, and Windows." },
-  { kicker = "Browser", title = "Rgit Web", description = "Optional GitHub-style companion to the CLI. Browse, blame, and review — or skip it and bring your own web view." },
+  { kicker = "Etiquette", title = "SemVer 2.0", description = "feat, fix, and breaking commits bump the version. The forge can reject a messy push." },
+  { kicker = "Remote", title = "SSH repositories", description = "Bare repos on port 2222. Clone and push with ordinary git." },
+  { kicker = "Review", title = "Merge requests", description = "Open, review, and fast-forward merge from the CLI." },
+  { kicker = "CI", title = "YAML workflows", description = "Shell steps on push, tag, and request. Linux, macOS, and Windows from one file." },
+  { kicker = "Browser", title = "Rgit Web", description = "Optional GitHub-style UI. Browse, blame, and review — or bring your own." },
 ]
 
 [extra.home_learn]
 eyebrow = "The forge"
-title = "Rabun Git (rgit)"
-description = "SSH based communication with teams and groups baked in. Etiquette is the default; you can switch it off."
+title = "A git remote on a machine you run."
+description = "Users, keys, and roles stay with you. Etiquette is on by default."
 cards = [
-  { kicker = "People", title = "Users and keys", description = "Create logins, attach SSH keys, and grant read, write, or admin on owner/name." },
-  { kicker = "History", title = "Everyday git", description = "Branches, clones, and tags work as they do on any SSH remote. feat/fix/breaking commits are the default language of a release." },
-  { kicker = "Versions", title = "Turn etiquette off", description = "Keep Conventional Commits and SemVer, or set commits, tags, and manifests to false in .rabun/version.toml." },
-  { kicker = "Builders", title = "Agents on your machines", description = "Register a builder per label. rgit agent polls over SSH, claims the oldest matching job, clones that SHA, and writes the log back." },
+  { kicker = "People", title = "Users and keys", description = "Create logins, attach SSH keys, grant read, write, or admin." },
+  { kicker = "History", title = "Everyday git", description = "Branches, clones, and tags work like any SSH remote." },
+  { kicker = "Versions", title = "Etiquette", description = "Keep Conventional Commits and SemVer, or switch the gates off." },
+  { kicker = "Builders", title = "Agents", description = "A builder polls over SSH, runs the job, writes the log back." },
 ]
 
 [extra.home_workflow]
 eyebrow = "Builders"
 title = "Linux, macOS, and Windows from one workflow."
-description = "runs-on: [linux, macos, windows] fans out to one run per label. Each agent polls the forge on port 2222, clones that commit, and runs the steps. Labels must match exactly."
+description = "One runs-on list, one run per label. Each agent polls the forge, clones that commit, and runs the steps."
 points = [
-  { title = "Linux", description = "Label linux. With no registered linux builder, the job still runs on the forge host as the rabun-git user, using sh -c." },
-  { title = "macOS", description = "rgit origin agent register mac --label macos, then rgit agent --labels macos on that Mac. launchd keeps the poll loop running. The shell defaults to sh." },
-  { title = "Windows", description = "The same poll loop with --labels windows. Steps default to pwsh -NoProfile -Command unless the job sets shell." },
+  { title = "Linux", description = "No linux builder registered? The job runs on the forge host." },
+  { title = "macOS", description = "Register a Mac builder and keep the agent polling." },
+  { title = "Windows", description = "Same poll loop. Steps default to PowerShell." },
 ]
 
 [extra.home_cta]
-title = "Read the guide, then start the forge."
-description = "Written for people who already use git clone, commit, and push."
+title = "Start the forge."
+description = "If you already use git, you already know the workflow."
 primary_label = "Install"
 primary_path = "/install/"
 secondary_path = ""
 +++
 
-Rabun Git stores bare repositories on a machine you administer. Teammates use `git`. Operators use `rgit` for users, keys, access, merge requests, builder agents, and [version releases](/docs/versioning/). [Rgit Web](/web/) is an optional companion UI. [`rgit view`](/docs/everyday-git/#browse-locally) is a local tree preview. Neither is required; you can bring your own web view.
+Host bare repositories on a machine you administer. Clone and push with `git`. Manage users, keys, merge requests, builders, and [releases](/docs/versioning/) with `rgit`. [Rgit Web](/web/) is optional. So is [`rgit view`](/docs/everyday-git/#browse-locally).
 
-[Install](/install/) a Linux archive, or [build from source](https://github.com/rconnelly/rgit) on GitHub.
+[Install](/install/) a Linux archive, or [build from source](https://github.com/rconnelly/rgit).

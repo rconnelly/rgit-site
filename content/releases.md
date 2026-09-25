@@ -7,7 +7,7 @@ generated = true
 source = "scripts/sync-releases.py"
 +++
 
-Binaries and source archives are on [GitHub Releases](https://github.com/rconnelly/rgit/releases). Tags are SemVer 2.0.0 with a `v` prefix and must match `Cargo.toml`. Pushing a tag publishes `rabun-git-<tag>-x86_64-unknown-linux-gnu.tar.gz`.
+Binaries are on [GitHub Releases](https://github.com/rconnelly/rgit/releases). Tags are SemVer 2.0.0 with a `v` prefix and must match `Cargo.toml`. Pushing a tag publishes the Linux x86_64 tarball.
 
 Latest stable onto an Ubuntu host:
 
