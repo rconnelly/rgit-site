@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Regenerate the user guide from the rabun-git checkout, then build the site
-# and pack public/ for DigitalOcean. The droplet never clones this repo.
+# and pack public/. The server never clones this repo.
 #
 #   ./scripts/build.sh
+#   ./deploy/ubuntu/push.sh --archive dist/rgit-site.tar.gz --bootstrap user@HOST
 #   ./deploy/digitalocean/push.sh --archive dist/rgit-site.tar.gz --bootstrap root@DROPLET_IP
 set -euo pipefail
 
